@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asmaa Gamal Ali | Junior Software Engineer & Frontend Developer</title>
+  
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace']
+          },
+          colors: {
+            brand: {
+              dark: '#0B132B',
+              navy: '#1C2541',
+              primary: '#1D4ED8', // Rich Blue
+              light: '#38BDF8',   // Light Sky Blue
+              purple: '#7C3AED',  // Vibrant Purple
+              accent: '#06B6D4'   // Cyan accent
+            }
+          },
+          backgroundImage: {
+            'digital-gradient': 'linear-gradient(135deg, #1E40AF 0%, #3B82F6 50%, #8B5CF6 100%)',
+            'purple-blue': 'linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)',
+            'cyan-blue': 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 100%)',
+            'glass-gradient': 'linear-gradient(145deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.03) 100%)'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-light selection:text-brand-dark">
+
+  <!-- ========================================================= -->
+  <!-- 1. TOP NAVIGATION BAR (NAVBAR) -->
+  <!-- ========================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300 shadow-sm" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-brand-primary to-brand-light flex items-center justify-center text-white shadow-md shadow-blue-500/30 group-hover:scale-105 transition-transform duration-300">
+            <i class="fa-solid fa-code text-lg"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xl font-extrabold tracking-tight text-brand-navy group-hover:text-brand-primary transition-colors duration-200">
+              Asmaa<span class="text-sky-500">.</span>Gamal
+            </span>
+            <span class="text-[10px] uppercase font-bold tracking-widest text-slate-400 -mt-1">
+              AsmaaDev &bull; NATU
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links (lg:flex) -->
+        <nav class="hidden lg:flex items-center space-x-8">
+          <a href="#home" class="text-sm font-semibold text-slate-700 hover:text-brand-primary transition-colors duration-200">Home</a>
+          <a href="#services" class="text-sm font-semibold text-slate-700 hover:text-brand-primary transition-colors duration-200">Services</a>
+          <a href="#projects" class="text-sm font-semibold text-slate-700 hover:text-brand-primary transition-colors duration-200">Projects &amp; Education</a>
+          <a href="#contact" class="text-sm font-semibold text-slate-700 hover:text-brand-primary transition-colors duration-200">Contact Me</a>
+        </nav>
+
+        <!-- Right Side CTA Button -->
+        <div class="hidden lg:flex items-center">
+          <a href="#contact" class="relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-sky-500 to-blue-600 rounded-full shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:from-sky-600 hover:to-blue-700 transition-all duration-300 transform hover:-translate-y-0.5">
+            <i class="fa-solid fa-file-arrow-down mr-2"></i>
+            Download CV / Hire Me
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button (block lg:hidden) -->
+        <div class="flex items-center lg:hidden">
+          <button id="mobileMenuBtn" aria-label="Toggle navigation menu" class="p-2.5 rounded-xl text-slate-700 hover:text-brand-primary hover:bg-slate-100 focus:outline-none transition-colors">
+            <i id="menuIcon" class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden border-b border-slate-200 bg-white/95 backdrop-blur-md px-4 pt-3 pb-6 space-y-3 shadow-xl">
+      <a href="#home" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:text-brand-primary hover:bg-blue-50/80 transition-colors">
+        <i class="fa-solid fa-house w-6 text-slate-400"></i> Home
+      </a>
+      <a href="#services" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:text-brand-primary hover:bg-blue-50/80 transition-colors">
+        <i class="fa-solid fa-layer-group w-6 text-slate-400"></i> Services
+      </a>
+      <a href="#projects" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:text-brand-primary hover:bg-blue-50/80 transition-colors">
+        <i class="fa-solid fa-graduation-cap w-6 text-slate-400"></i> Projects &amp; Education
+      </a>
+      <a href="#contact" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:text-brand-primary hover:bg-blue-50/80 transition-colors">
+        <i class="fa-solid fa-envelope w-6 text-slate-400"></i> Contact Me
+      </a>
+      <div class="pt-2">
+        <a href="#contact" class="mobile-nav-link w-full inline-flex items-center justify-center px-5 py-3 text-sm font-bold text-white bg-gradient-to-r from-sky-500 to-blue-600 rounded-xl shadow-md text-center">
+          <i class="fa-solid fa-file-arrow-down mr-2"></i>
+          Download CV / Hire Me
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ========================================================= -->
+  <!-- 2. HERO SECTION -->
+  <!-- ========================================================= -->
+  <section id="home" class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-gradient-to-b from-blue-50/60 via-white to-slate-50">
+    <!-- Subtle Ambient Glow Background Orbs -->
+    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-blue-300/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 right-0 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Column: Introduction & Content -->
+        <div class="space-y-6 text-center lg:text-left">
+          
+          <!-- Pill Tag -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/80 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+            Junior Software Engineer &bull; NATU
+          </div>
+
+          <!-- Main Heading -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-dark tracking-tight leading-[1.15]">
+            Building Scalable <br class="hidden sm:inline">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-sky-500 to-purple-600">
+              Digital &amp; Software
+            </span> <br>
+            Solutions.
+          </h1>
+
+          <!-- Description -->
+          <p class="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            Hi, I'm <strong class="text-slate-900 font-semibold">Asmaa Gamal Ali</strong>, a 21-year-old Junior Software Engineer studying at <strong class="text-slate-900 font-semibold">New Assiut Technological University (NATU)</strong>. I specialize in building modern, responsive, and high-performance web applications with clean, maintainable architecture.
+          </p>
+
+          <!-- Quick Badges / Features Row -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+            <div class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-slate-200/80 shadow-sm text-xs font-semibold text-slate-700">
+              <i class="fa-solid fa-graduation-cap text-sky-500"></i>
+              <span>NATU Student (21 Y/O)</span>
+            </div>
+            <div class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-slate-200/80 shadow-sm text-xs font-semibold text-slate-700">
+              <i class="fa-solid fa-rocket text-purple-500"></i>
+              <span>+15 Completed Projects</span>
+            </div>
+            <div class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-slate-200/80 shadow-sm text-xs font-semibold text-slate-700">
+              <i class="fa-solid fa-laptop-code text-blue-600"></i>
+              <span>Junior Software Engineer</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            <a href="#projects" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 transform hover:-translate-y-0.5">
+              <span>Start Your Project Now</span>
+              <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+            </a>
+            <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 text-base font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl shadow-sm hover:border-slate-300 transition-all duration-300 group">
+              <span class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mr-3 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                <i class="fa-solid fa-play text-xs ml-0.5"></i>
+              </span>
+              <span>Watch Intro Video</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right Column: DigitalPro Style Visual Glassmorphism Hero Card -->
+        <div class="relative flex items-center justify-center">
+          
+          <!-- Outer Decorative Gradient Backdrop -->
+          <div class="relative w-full max-w-md lg:max-w-lg aspect-square rounded-3xl p-8 bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 shadow-2xl shadow-blue-600/30 flex flex-col justify-between overflow-hidden">
+            
+            <!-- Ambient Gradient Pattern Rings -->
+            <div class="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+            <div class="absolute -bottom-16 -left-16 w-56 h-56 bg-sky-400/20 rounded-full blur-2xl pointer-events-none"></div>
+
+            <!-- Top Header in Hero Card -->
+            <div class="flex items-center justify-between z-10">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-400"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+              </div>
+              <span class="text-xs font-mono font-medium text-white/80 px-2.5 py-1 rounded-md bg-white/10 border border-white/15">
+                portfolio.engineer.ts
+              </span>
+            </div>
+
+            <!-- Central Glassmorphism Core -->
+            <div class="z-10 my-auto p-6 sm:p-8 rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 text-white shadow-inner text-center space-y-4">
+              <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-tr from-sky-400 to-blue-500 flex items-center justify-center text-white text-3xl shadow-lg shadow-sky-500/40 animate-pulse">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-extrabold text-white">Full-Stack Scalability</h3>
+                <p class="text-xs sm:text-sm text-blue-100 mt-1">High Efficiency &bull; React &bull; Tailwind &bull; Clean Architecture</p>
+              </div>
+              <!-- Mini Metric Bars -->
+              <div class="space-y-2 pt-2 text-left">
+                <div class="flex justify-between text-xs text-white/90">
+                  <span>UI/UX Performance</span>
+                  <span class="font-bold text-sky-300">99.8%</span>
+                </div>
+                <div class="w-full h-1.5 bg-white/20 rounded-full overflow-hidden">
+                  <div class="w-full h-full bg-gradient-to-r from-sky-300 to-emerald-300 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Floating Tag inside Card -->
+            <div class="flex items-center justify-between text-xs text-white/75 z-10 pt-2 border-t border-white/15">
+              <span>Asmaa Gamal &bull; Class of 2026</span>
+              <span class="flex items-center gap-1 font-semibold text-emerald-300">
+                <i class="fa-solid fa-circle-check"></i> Verified Developer
+              </span>
+            </div>
+
+          </div>
+
+          <!-- Floating Small Badge Card (+100% Clean Code) -->
+          <div class="absolute -bottom-6 -left-4 sm:bottom-4 sm:-left-6 z-20 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-xl flex items-center gap-3.5 transform hover:scale-105 transition-transform duration-300">
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div>
+              <p class="text-base font-extrabold text-slate-900">+100% Clean Code</p>
+              <p class="text-xs text-slate-500">Industry Standards &amp; SOLID</p>
+            </div>
+          </div>
+
+          <!-- Top-Right Floating Tech Badge -->
+          <div class="absolute -top-5 -right-2 sm:-top-4 sm:-right-4 z-20 px-4 py-2.5 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-xl flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <span class="text-xs font-bold text-slate-800">Ultra-Fast Load Times</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 3. SERVICES / TECHNICAL SKILLS SECTION -->
+  <!-- ========================================================= -->
+  <section id="services" class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/60 text-blue-700 text-xs font-bold uppercase tracking-wider">
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+          Expertise &amp; Capabilities
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight">
+          My Integrated Services
+        </h2>
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+          Combining academic foundations from New Assiut Technological University with cutting-edge industry software tools to engineer robust digital applications.
+        </p>
+      </div>
+
+      <!-- 3 Service Cards (grid-cols-1 md:grid-cols-3 gap-8) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Card 1: Frontend Development -->
+        <div class="group relative rounded-3xl bg-slate-50/70 hover:bg-white p-8 border border-slate-200/80 hover:border-blue-400 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col justify-between">
+          <div class="space-y-5">
+            <!-- Icon -->
+            <div class="w-16 h-16 rounded-2xl bg-blue-600/10 text-blue-600 flex items-center justify-center text-2xl group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+              <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+              Frontend Development
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Crafting pixel-perfect, accessible, and dynamic interfaces that provide intuitive, engaging user experiences across every device.
+            </p>
+            <!-- Bullet Points -->
+            <ul class="space-y-2.5 pt-2 text-sm text-slate-700">
+              <li class="flex items-center gap-2.5">
+                <i class="fa-solid fa-circle-check text-blue-600 text-sm"></i>
+                <span class="font-medium">HTML5, CSS3 &amp; JavaScript</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="fa-solid fa-circle-check text-blue-600 text-sm"></i>
+                <span class="font-medium">Tailwind CSS Responsive UI</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="fa-solid fa-circle-check text-blue-600 text-sm"></i>
+                <span class="font-medium">Interactive Web Apps</span>
+              </li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-200/60 flex items-center text-xs font-bold text-blue-600 group-hover:translate-x-1 transition-transform">
+            <span>Learn More About Frontend</span>
+            <i class="fa-solid fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+
+        <!-- Card 2: Software Engineering & Architecture -->
+        <div class="group relative rounded-3xl bg-slate-50/70 hover:bg-white p-8 border border-slate-200/80 hover:border-purple-400 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col justify-between">
+          <div class="space-y-5">
+            <!-- Icon -->
+            <div class="w-16 h-16 rounded-2xl bg-purple-600/10 text-purple-600 flex items-center justify-center text-2xl group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+              <i class="fa-solid fa-cubes-stacked"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors">
+              Software Engineering &amp; Architecture
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Applying algorithmic rigor, structured patterns, and clean code principles to build scalable and robust application foundations.
+            </p>
+            <!-- Bullet Points -->
+            <ul class="space-y-2.5 pt-2 text-sm text-slate-700">
+              <li class="flex items-center gap-2.5">
+                <i class="fa-solid fa-circle-check text-purple-600 text-sm"></i>
+                <span class="font-medium">Object-Oriented Programming</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="fa-solid fa-circle-check text-purple-600 text-sm"></i>
+                <span class="font-medium">Data Structures &amp; Algorithms</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="fa-solid fa-circle-check text-purple-600 text-sm"></i>
+                <span class="font-medium">Problem Solving &amp; Debugging</span>
+              </li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-200/60 flex items-center text-xs font-bold text-purple-600 group-hover:translate-x-1 transition-transform">
+            <span>Learn More About Architecture</span>
+            <i class="fa-solid fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+
+        <!-- Card 3: Website Design & Development -->
+        <div class="group relative rounded-3xl bg-slate-50/70 hover:bg-white p-8 border border-slate-200/80 hover:border-sky-400 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col justify-between">
+          <div class="space-y-5">
+            <!-- Icon -->
+            <div class="w-16 h-16 rounded-2xl bg-sky-600/10 text-sky-600 flex items-center justify-center text-2xl group-hover:bg-sky-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+              <i class="fa-solid fa-compass-drafting"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 group-hover:text-sky-600 transition-colors">
+              Website Design &amp; Development
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Designing user-friendly, high-converting digital web products focused on maximum performance, accessibility, and modern branding.
+            </p>
+            <!-- Bullet Points -->
+            <ul class="space-y-2.5 pt-2 text-sm text-slate-700">
+              <li class="flex items-center gap-2.5">
+                <i class="fa-solid fa-circle-check text-sky-600 text-sm"></i>
+                <span class="font-medium">Responsive Modern Layouts</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="fa-solid fa-circle-check text-sky-600 text-sm"></i>
+                <span class="font-medium">High Performance &amp; Speed</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="fa-solid fa-circle-check text-sky-600 text-sm"></i>
+                <span class="font-medium">Clean &amp; Maintainable Code</span>
+              </li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-200/60 flex items-center text-xs font-bold text-sky-600 group-hover:translate-x-1 transition-transform">
+            <span>Learn More About Web Design</span>
+            <i class="fa-solid fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 4. STATS COUNTER BAR -->
+  <!-- ========================================================= -->
+  <section class="relative py-16 bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-800 text-white overflow-hidden shadow-inner">
+    <!-- Subtle overlay textures -->
+    <div class="absolute inset-0 bg-white/[0.03] backdrop-blur-[1px] pointer-events-none"></div>
+    <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-sky-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y-2 divide-white/10 sm:divide-y-0">
+        
+        <!-- Stat 1 -->
+        <div class="pt-6 sm:pt-0">
+          <div class="flex items-baseline justify-center">
+            <span class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight counter" data-target="21">0</span>
+          </div>
+          <p class="text-sm sm:text-base font-semibold text-blue-200 mt-2">Years Old</p>
+          <p class="text-xs text-white/60">Young &amp; Driven Talent</p>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="pt-6 sm:pt-0">
+          <div class="flex items-baseline justify-center">
+            <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-sky-300 mr-0.5">+</span>
+            <span class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight counter" data-target="15">0</span>
+          </div>
+          <p class="text-sm sm:text-base font-semibold text-blue-200 mt-2">Projects Completed</p>
+          <p class="text-xs text-white/60">Academic &amp; Real-World</p>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="pt-6 sm:pt-0">
+          <div class="flex items-baseline justify-center">
+            <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-purple-300 mr-0.5">+</span>
+            <span class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight counter" data-target="10">0</span>
+          </div>
+          <p class="text-sm sm:text-base font-semibold text-blue-200 mt-2">Tech Stack Tools</p>
+          <p class="text-xs text-white/60">Modern Languages &amp; Libs</p>
+        </div>
+
+        <!-- Stat 4 -->
+        <div class="pt-6 sm:pt-0">
+          <div class="flex items-baseline justify-center">
+            <span class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight counter" data-target="100">0</span>
+            <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-300 ml-1">%</span>
+          </div>
+          <p class="text-sm sm:text-base font-semibold text-blue-200 mt-2">Commitment &amp; Passion</p>
+          <p class="text-xs text-white/60">Dedicated to Excellence</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 5. FEATURED PROJECTS & ACADEMIC JOURNEY -->
+  <!-- ========================================================= -->
+  <section id="projects" class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/60 text-indigo-700 text-xs font-bold uppercase tracking-wider">
+          <i class="fa-solid fa-code-branch"></i>
+          Portfolio &amp; Academic Milestones
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight">
+          Featured Projects &amp; Academic Journey
+        </h2>
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+          Showcasing my top software work and engineering builds developed at New Assiut Technological University (NATU) and independent initiatives.
+        </p>
+      </div>
+
+      <!-- 4 Cards (grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Card 1: DigitalPro Portfolio -->
+        <div class="group relative rounded-3xl bg-white border border-slate-200/80 shadow-md hover:shadow-2xl overflow-hidden transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+          <div>
+            <!-- Gradient Header Banner with Avatar Icon -->
+            <div class="h-36 bg-gradient-to-tr from-blue-600 to-sky-400 relative p-4 flex items-center justify-center">
+              <div class="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center text-3xl shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                <i class="fa-solid fa-display"></i>
+              </div>
+              <span class="absolute top-3 right-3 text-[10px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-sm text-white px-2 py-1 rounded-md border border-white/20">
+                Featured
+              </span>
+            </div>
+
+            <!-- Content Area -->
+            <div class="p-6 space-y-3">
+              <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Frontend &amp; Tailwind CSS</span>
+              <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                DigitalPro Portfolio
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Modern responsive developer portfolio with glassmorphism visual aesthetics and zero CSS media queries.
+              </p>
+            </div>
+          </div>
+
+          <!-- Hover Overlay / Action Links Footer -->
+          <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">Live Demo &amp; Code</span>
+            <!-- Action Icons that highlight on hover -->
+            <div class="flex items-center gap-2">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="View Source on GitHub" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 flex items-center justify-center text-xs transition-colors shadow-sm">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="#projects" title="Live Preview" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-sky-500 hover:text-white hover:border-sky-500 flex items-center justify-center text-xs transition-colors shadow-sm">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-blue-700 hover:text-white hover:border-blue-700 flex items-center justify-center text-xs transition-colors shadow-sm">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: University Management System -->
+        <div class="group relative rounded-3xl bg-white border border-slate-200/80 shadow-md hover:shadow-2xl overflow-hidden transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+          <div>
+            <!-- Gradient Header Banner with Avatar Icon -->
+            <div class="h-36 bg-gradient-to-tr from-indigo-600 to-purple-500 relative p-4 flex items-center justify-center">
+              <div class="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center text-3xl shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                <i class="fa-solid fa-school"></i>
+              </div>
+              <span class="absolute top-3 right-3 text-[10px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-sm text-white px-2 py-1 rounded-md border border-white/20">
+                NATU Core
+              </span>
+            </div>
+
+            <!-- Content Area -->
+            <div class="p-6 space-y-3">
+              <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Software Engineering (NATU)</span>
+              <h3 class="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                University Management System
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Comprehensive academic project built during university studies to streamline courses, grading, and student enrollments.
+              </p>
+            </div>
+          </div>
+
+          <!-- Hover Overlay / Action Links Footer -->
+          <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">Academic Project</span>
+            <div class="flex items-center gap-2">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="View Source on GitHub" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 flex items-center justify-center text-xs transition-colors shadow-sm">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="#projects" title="Live Preview" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 flex items-center justify-center text-xs transition-colors shadow-sm">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-blue-700 hover:text-white hover:border-blue-700 flex items-center justify-center text-xs transition-colors shadow-sm">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: E-Commerce Web App -->
+        <div class="group relative rounded-3xl bg-white border border-slate-200/80 shadow-md hover:shadow-2xl overflow-hidden transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+          <div>
+            <!-- Gradient Header Banner with Avatar Icon -->
+            <div class="h-36 bg-gradient-to-tr from-cyan-500 to-blue-600 relative p-4 flex items-center justify-center">
+              <div class="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center text-3xl shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+              <span class="absolute top-3 right-3 text-[10px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-sm text-white px-2 py-1 rounded-md border border-white/20">
+                Full UI
+              </span>
+            </div>
+
+            <!-- Content Area -->
+            <div class="p-6 space-y-3">
+              <span class="text-xs font-bold text-cyan-600 uppercase tracking-wider">JavaScript &amp; UI Design</span>
+              <h3 class="text-lg font-bold text-slate-900 group-hover:text-cyan-600 transition-colors">
+                E-Commerce Web App
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Interactive shopping experience featuring dynamic product filtering, cart state management, and seamless checkout UI.
+              </p>
+            </div>
+          </div>
+
+          <!-- Hover Overlay / Action Links Footer -->
+          <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">Dynamic Store</span>
+            <div class="flex items-center gap-2">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="View Source on GitHub" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 flex items-center justify-center text-xs transition-colors shadow-sm">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="#projects" title="Live Preview" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-cyan-600 hover:text-white hover:border-cyan-600 flex items-center justify-center text-xs transition-colors shadow-sm">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-blue-700 hover:text-white hover:border-blue-700 flex items-center justify-center text-xs transition-colors shadow-sm">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Task & Productivity Tracker -->
+        <div class="group relative rounded-3xl bg-white border border-slate-200/80 shadow-md hover:shadow-2xl overflow-hidden transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+          <div>
+            <!-- Gradient Header Banner with Avatar Icon -->
+            <div class="h-36 bg-gradient-to-tr from-purple-600 to-pink-500 relative p-4 flex items-center justify-center">
+              <div class="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center text-3xl shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                <i class="fa-solid fa-list-check"></i>
+              </div>
+              <span class="absolute top-3 right-3 text-[10px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-sm text-white px-2 py-1 rounded-md border border-white/20">
+                Productivity
+              </span>
+            </div>
+
+            <!-- Content Area -->
+            <div class="p-6 space-y-3">
+              <span class="text-xs font-bold text-purple-600 uppercase tracking-wider">Web Application</span>
+              <h3 class="text-lg font-bold text-slate-900 group-hover:text-purple-600 transition-colors">
+                Task &amp; Productivity Tracker
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Fast, clean web application for daily developer workflows, Kanban status management, and local storage persistence.
+              </p>
+            </div>
+          </div>
+
+          <!-- Hover Overlay / Action Links Footer -->
+          <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">Productivity App</span>
+            <div class="flex items-center gap-2">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="View Source on GitHub" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 flex items-center justify-center text-xs transition-colors shadow-sm">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="#projects" title="Live Preview" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-purple-600 hover:text-white hover:border-purple-600 flex items-center justify-center text-xs transition-colors shadow-sm">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-blue-700 hover:text-white hover:border-blue-700 flex items-center justify-center text-xs transition-colors shadow-sm">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 6. CONTACT US & INFORMATION SECTION -->
+  <!-- ========================================================= -->
+  <section id="contact" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+    <!-- Ambient dark background glow -->
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 text-sky-400 text-xs font-bold uppercase tracking-wider">
+          <i class="fa-solid fa-paper-plane"></i>
+          Get In Touch
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+          Let's Build Something Exceptional Together
+        </h2>
+        <p class="text-base sm:text-lg text-slate-400 leading-relaxed">
+          Have an exciting project, a software engineering role, or a collaboration opportunity? Drop a message below and I'll respond promptly!
+        </p>
+      </div>
+
+      <!-- Main Two-Column Grid (grid-cols-1 lg:grid-cols-2 gap-12) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        
+        <!-- Left Side: Interactive Contact Form -->
+        <div class="rounded-3xl bg-slate-800/80 backdrop-blur-md p-8 sm:p-10 border border-slate-700/80 shadow-2xl">
+          <h3 class="text-2xl font-bold text-white mb-2">Send a Message</h3>
+          <p class="text-sm text-slate-400 mb-6">Fill out the form below and I'll get back to you within 24 hours.</p>
+
+          <form id="contactForm" class="space-y-5">
+            <div>
+              <label for="fullName" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+                Full Name
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                  <i class="fa-regular fa-user"></i>
+                </span>
+                <input 
+                  type="text" 
+                  id="fullName" 
+                  name="fullName" 
+                  required
+                  placeholder="e.g. John Doe" 
+                  class="w-full pl-10 pr-4 py-3 bg-slate-900/90 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-sm transition-colors"
+                >
+              </div>
+            </div>
+
+            <div>
+              <label for="emailAddress" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+                Email Address
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                  <i class="fa-regular fa-envelope"></i>
+                </span>
+                <input 
+                  type="email" 
+                  id="emailAddress" 
+                  name="emailAddress" 
+                  required
+                  placeholder="e.g. john@example.com" 
+                  class="w-full pl-10 pr-4 py-3 bg-slate-900/90 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-sm transition-colors"
+                >
+              </div>
+            </div>
+
+            <div>
+              <label for="message" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+                Your Message
+              </label>
+              <div class="relative">
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  rows="4" 
+                  required
+                  placeholder="Describe your project, role, or inquiry..." 
+                  class="w-full p-4 bg-slate-900/90 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-sm transition-colors resize-none"
+                ></textarea>
+              </div>
+            </div>
+
+            <button 
+              type="submit" 
+              class="w-full py-3.5 px-6 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
+            >
+              <i class="fa-solid fa-paper-plane text-sm"></i>
+              <span>Send Message</span>
+            </button>
+            
+            <!-- Success / Status alert message -->
+            <div id="formFeedback" class="hidden p-3.5 rounded-xl text-xs font-semibold text-emerald-300 bg-emerald-950/60 border border-emerald-800 text-center">
+              Thank you! Your message has been received. I'll get back to you soon.
+            </div>
+          </form>
+        </div>
+
+        <!-- Right Side: Contact Information & Visual Map Card -->
+        <div class="space-y-8">
+          
+          <!-- Contact Detail Cards -->
+          <div class="rounded-3xl bg-slate-800/80 backdrop-blur-md p-8 border border-slate-700/80 shadow-2xl space-y-6">
+            <div>
+              <h3 class="text-2xl font-bold text-white">Asmaa Gamal Ali</h3>
+              <p class="text-sm text-sky-400 font-semibold mt-1">Junior Software Engineer &bull; NATU</p>
+            </div>
+
+            <div class="space-y-4 text-sm">
+              <!-- Education -->
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-blue-600/20 text-sky-400 flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-slate-400 font-bold">University &amp; Degree</p>
+                  <p class="text-white font-medium">New Assiut Technological University (NATU)</p>
+                  <p class="text-xs text-slate-400">Information Technology / Software Engineering</p>
+                </div>
+              </div>
+
+              <!-- Location -->
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-slate-400 font-bold">Location</p>
+                  <p class="text-white font-medium">Assiut, Egypt</p>
+                  <p class="text-xs text-slate-400">Open for remote &amp; on-site software opportunities</p>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-slate-400 font-bold">Email Address</p>
+                  <a href="mailto:asmaa.gamal.ali.dev@gmail.com" class="text-sky-300 hover:text-white transition-colors font-medium">
+                    asmaa.gamal.ali.dev@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-slate-400 font-bold">Phone / WhatsApp</p>
+                  <p class="text-white font-medium">+20 100 000 0000</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stylized Visual Placeholder Card for Location / Site Map -->
+          <div class="rounded-3xl bg-slate-800/80 backdrop-blur-md p-6 border border-slate-700/80 shadow-2xl relative overflow-hidden group">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-map-location-dot text-sky-400"></i>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-300">New Assiut Tech University Campus</span>
+              </div>
+              <span class="text-[10px] bg-slate-900 px-2 py-1 rounded text-slate-400 font-mono">Assiut, Egypt</span>
+            </div>
+
+            <!-- Visual Graphic Map Representation -->
+            <div class="relative h-44 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center overflow-hidden">
+              <!-- Grid lines pattern -->
+              <div class="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
+              
+              <!-- Road/River graphic curves -->
+              <div class="absolute w-full h-8 bg-sky-950/40 border-y border-sky-800/30 transform -rotate-12"></div>
+              <div class="absolute w-8 h-full bg-indigo-950/40 border-x border-indigo-800/30 transform rotate-45"></div>
+
+              <!-- Map Pin Beacon -->
+              <div class="relative z-10 flex flex-col items-center">
+                <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center text-base shadow-lg shadow-blue-500/50 ring-4 ring-blue-400/20 animate-bounce">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="mt-2 px-3 py-1 bg-slate-900/90 rounded-full border border-slate-700 text-[11px] font-bold text-sky-300">
+                  NATU Campus &bull; Assiut
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!-- 7. FOOTER -->
+  <!-- ========================================================= -->
+  <footer class="bg-slate-950 text-slate-400 py-10 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+        
+        <!-- Copyright Text on Left -->
+        <div class="flex items-center gap-3 text-center sm:text-left">
+          <div class="w-8 h-8 rounded-full bg-blue-600/20 text-sky-400 flex items-center justify-center text-xs">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-400">
+            &copy; 2026 <strong class="text-slate-200 font-semibold">Asmaa Gamal Ali (AsmaaDev)</strong>. All rights reserved.
+          </p>
+        </div>
+
+        <!-- Social Media Icons Aligned to Far Right -->
+        <div class="flex items-center space-x-3">
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-blue-600 hover:border-blue-600 flex items-center justify-center text-sm transition-all duration-200">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 hover:border-slate-700 flex items-center justify-center text-sm transition-all duration-200">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-blue-700 hover:border-blue-700 flex items-center justify-center text-sm transition-all duration-200">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-sky-500 hover:border-sky-500 flex items-center justify-center text-sm transition-all duration-200">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ========================================================= -->
+  <!-- VANILLA JAVASCRIPT LOGIC -->
+  <!-- ========================================================= -->
+  <script>
+    // 1. Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isExpanded = !mobileMenu.classList.contains('hidden');
+      if (isExpanded) {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('fa-xmark');
+        menuIcon.classList.add('fa-bars');
+      } else {
+        mobileMenu.classList.remove('hidden');
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-xmark');
+      }
+    });
+
+    // Close mobile menu on link click
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('fa-xmark');
+        menuIcon.classList.add('fa-bars');
+      });
+    });
+
+    // 2. Animated Stats Counters with Intersection Observer
+    const counters = document.querySelectorAll('.counter');
+    let hasAnimated = false;
+
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const duration = 1800; // 1.8 seconds animation
+        const startTime = performance.now();
+
+        const updateCount = (currentTime) => {
+          const elapsedTime = currentTime - startTime;
+          const progress = Math.min(elapsedTime / duration, 1);
+          
+          // Ease-out cubic animation formula
+          const easeOut = 1 - Math.pow(1 - progress, 3);
+          const currentVal = Math.floor(easeOut * target);
+
+          counter.innerText = currentVal;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCount);
+          } else {
+            counter.innerText = target;
+          }
+        };
+
+        requestAnimationFrame(updateCount);
+      });
+    };
+
+    const counterSection = document.querySelector('.counter')?.closest('section');
+    if (counterSection) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !hasAnimated) {
+            hasAnimated = true;
+            animateCounters();
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(counterSection);
+    }
+
+    // 3. Contact Form Submission Feedback
+    const contactForm = document.getElementById('contactForm');
+    const formFeedback = document.getElementById('formFeedback');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Display positive feedback toast
+        formFeedback.classList.remove('hidden');
+        contactForm.reset();
+        
+        setTimeout(() => {
+          formFeedback.classList.add('hidden');
+        }, 5000);
+      });
+    }
+
+    // 4. Navbar Shadow On Scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navbar.classList.add('shadow-md');
+        navbar.classList.remove('shadow-sm');
+      } else {
+        navbar.classList.remove('shadow-md');
+        navbar.classList.add('shadow-sm');
+      }
+    });
+  </script>
+
+</body>
+</html>
+
